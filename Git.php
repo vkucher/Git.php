@@ -410,7 +410,7 @@ class GitRepo {
      * @param  string $tag
      * @return string
      */
-	public function commit($message = "", $commit_all = true, $author = "", $date = "", $tag = '') {
+	public function commit($message = "", $commit_all = true, $author = "", $date = "", $tag = "") {
 		$author = !empty($author) ? "--author=".escapeshellarg($author) : '';
 		$date = !empty($date) ? "--date=".escapeshellarg($date) : '';
 		$flags = $commit_all ? '-av' : '-v';
