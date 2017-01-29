@@ -407,12 +407,17 @@ class GitRepo {
      * @param  string  $message    commit message
      * @param  boolean $commit_all should all files be committed automatically (-a flag)
      * @param  string $author
+     * @param  string $tag
      * @return string
      */
-	public function commit($message = "", $commit_all = true, $author = "", $date = "") {
+	public function commit($message = "", $commit_all = true, $author = "", $date = "", $tag = '') {
 		$author = !empty($author) ? "--author=".escapeshellarg($author) : '';
 		$date = !empty($date) ? "--date=".escapeshellarg($date) : '';
 		$flags = $commit_all ? '-av' : '-v';
+		if (!empty($tag)) {
+			$this->add_tag($tag);
+		}
+		
 		return $this->run("commit $author $date ".$flags." -m ".escapeshellarg($message));
 	}
 
