@@ -407,6 +407,7 @@ class GitRepo {
      * @param  string  $message    commit message
      * @param  boolean $commit_all should all files be committed automatically (-a flag)
      * @param  string $author
+     * @param  string $date
      * @param  string $tag
      * @return string
      */
