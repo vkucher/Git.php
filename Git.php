@@ -415,11 +415,12 @@ class GitRepo {
 		$author = !empty($author) ? "--author=".escapeshellarg($author) : '';
 		$date = !empty($date) ? "--date=".escapeshellarg($date) : '';
 		$flags = $commit_all ? '-av' : '-v';
+		$hash =  $this->run("commit $author $date ".$flags." -m ".escapeshellarg($message));
 		if (!empty($tag)) {
 			$this->add_tag($tag);
 		}
 		
-		return $this->run("commit $author $date ".$flags." -m ".escapeshellarg($message));
+		return $hash;
 	}
 
 	/**
